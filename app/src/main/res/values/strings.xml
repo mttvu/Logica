@@ -7,4 +7,7 @@
     <string name="b">B</string>
     <string name="ab">A ^ B</string>
     <string name="submit">Submit</string>
+    <string name="incorrect">Incorrect</string>
+    <string name="correct">Correct</string>
+    <string name="tryagain">Try Again</string>
 </resources>
