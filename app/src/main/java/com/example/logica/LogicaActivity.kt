@@ -7,23 +7,23 @@ import kotlinx.android.synthetic.main.activity_logica.*
 
 class LogicaActivity : AppCompatActivity() {
 
-    private var submitting = true;
+    private var submitting = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_logica)
         initViews()
     }
 
-    private fun initViews(){
+    private fun initViews() {
         btnSubmit.setOnClickListener { onSubmitClick() }
     }
 
-    private fun onSubmitClick(){
-        if(submitting){
+    private fun onSubmitClick() {
+        if (submitting) {
             checkAnswers()
             btnSubmit.text = getString(R.string.tryagain)
 
-        }else{
+        } else {
             tryAgain()
             btnSubmit.text = getString(R.string.submit)
         }
@@ -31,7 +31,7 @@ class LogicaActivity : AppCompatActivity() {
         submitting = !submitting
     }
 
-    private fun tryAgain(){
+    private fun tryAgain() {
         //clear the edittexts so you can make another attempt
         etCase1Answer.text.clear()
         etCase2Answer.text.clear()
@@ -40,31 +40,24 @@ class LogicaActivity : AppCompatActivity() {
 
     }
 
-    private fun checkAnswers(){
+    private fun checkAnswers() {
         //check answers of every case, if the answer is incorrect show an incorrect toast message and return
-        if(!etCase1Answer.text.toString().equals(getString(R.string.t), ignoreCase = true)){
-            onAnswerIncorrect()
-            return
-        }
+        if (etCase1Answer.text.toString().equals(getString(R.string.t), ignoreCase = true) &&
+            etCase2Answer.text.toString().equals(getString(R.string.f), ignoreCase = true) &&
+            etCase3Answer.text.toString().equals(getString(R.string.f), ignoreCase = true) &&
+            etCase4Answer.text.toString().equals(getString(R.string.f), ignoreCase = true)
+        ) {
+            onAnswerCorrect()
 
-        if(!etCase2Answer.text.toString().equals(getString(R.string.f), ignoreCase = true)){
-            onAnswerIncorrect()
-            return
-        }
+        } else {
 
-        if(!etCase3Answer.text.toString().equals(getString(R.string.f), ignoreCase = true)){
             onAnswerIncorrect()
-            return
-        }
 
-        if(!etCase4Answer.text.toString().equals(getString(R.string.f), ignoreCase = true)){
-            onAnswerIncorrect()
-            return
         }
-        onAnswerCorrect()
 
 
     }
+
     /**
      * Displays a successful Toast message.
      */
